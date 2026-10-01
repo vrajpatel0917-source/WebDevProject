@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rome With Us</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #fafafa; 
+            color: #333;
+            line-height: 1.6;
+        }
+         
+        section {
+            padding: 80px 10%; 
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #222;
+        }
+
+        nav {
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 15px 10%;
+            position: sticky; 
+            top: 0;
+            z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navigation {
+            list-style: none;
+            display: flex;
+            gap: 20px; 
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .navigation a:hover {
+            color: #c0392b; 
+        }
+
+        .buttonn {
+            display: inline-block;
+            background-color: #c0392b;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s; 
+        }
+
+        .buttonn:hover {
+            background-color: #a93226;
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(192, 57, 43, 0.4);
+        }
+
+        .buttonn:active {
+            transform: translateY(2px) scale(0.95);
+            box-shadow: 0 2px 5px rgba(192, 57, 43, 0.4);
+        }
+
+         #home {
+            height: 100vh; 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=2000&auto=format&fit=crop') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .home_text {
+            animation: fadeInDown 1.5s ease-out forwards; 
+        }
+
+        .home_text h1 { 
+            font-size: 4rem; margin-bottom: 10px; 
+        }
+        .home_text p { 
+            font-size: 1.2rem; margin-bottom: 25px; 
+        }
+
+        .history_text {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            text-align: justify;
+        }
+
+
+        .attraction_cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .card_image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s ease; 
+        }
+
+        .card:hover .card_image {
+            transform: scale(1.1);
+        }
+
+        .card_information { padding: 20px; }
+
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse; 
+            background: white;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #c0392b;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; 
+        }
+
+
+        .food_flex {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .food_item {
+            flex: 1 1 300px; 
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .food_item h3 
+        { 
+            color: #c0392b; margin-bottom: 10px; 
+        }
+
+
+        .form_box {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .form_group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 40px 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .social_media_links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social_media_links a:hover { color: #c0392b; }
+
+        .copyright {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <h2>ROME</h2>
+        <ul class="navigation">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#attractions">Attractions</a></li>
+            <li><a href="#itinerary">Itinerary</a></li>
+            <li><a href="#food">Food</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <div class="home_text">
+            <h1>The Eternal City</h1>
+            <p>Discover the history, architecture, and cuisine of Rome.</p>
+            <a href="#attractions" class="buttonn">Explore Now</a>
+        </div>
+    </header>
+
+    <section id="history">
+        <h2>History & Culture</h2>
+        <div class="history_text">
+            <p>Rome, the capital of Italy, is a sprawling, cosmopolitan city with nearly 3,000 years of globally influential art, architecture, and culture on display. Ancient ruins such as the Forum and the Colosseum evoke the power of the former Roman Empire. Vatican City, headquarters of the Roman Catholic Church, has St. Peter’s Basilica and the Vatican Museums, which house masterpieces such as Michelangelo’s Sistine Chapel frescoes.</p>
+        </div>
+    </section>
+
+    <section id="attractions">
+        <h2>Top Attractions</h2>
+        <div class="attraction_cards">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=500&auto=format&fit=crop" alt="Colosseum" class="card_image"> 
+                 <div class="card_information">
+                    <h3>The Colosseum</h3>
+                    <p>The largest ancient amphitheatre ever built, holding up to 80,000 spectators.</p>
+                 </div>
+            </div>
+           <div class="card">
+                <img src="https://images.unsplash.com/photo-1525874684015-58379d421a52?w=500&auto=format&fit=crop" alt="Trevi Fountain" class="card_image">
+                <div class="card_information">
+                    <h3>Trevi Fountain</h3>
+                    <p>Toss a coin over your left shoulder to ensure a return trip to Rome!</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1614354987493-a010f414d0d1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGFudGhlb258ZW58MHx8MHx8fDA%3D" alt="Pantheon" class="card_image">
+                <div class="card_information">
+                    <h3>The Pantheon</h3>
+                    <p>A former Roman temple, now a church, famous for its massive unreinforced concrete dome.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="itinerary" style="background-color: #eaeaea;">
+        <h2>Suggested Itinerary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Morning Activity</th>
+                    <th>Afternoon Activity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Day 1: Ancient Rome</td>
+                    <td>Tour the Colosseum</td>
+                    <td>Walk through the Roman Forum</td>
+                </tr>
+                <tr>
+                    <td>Day 2: The Vatican</td>
+                    <td>Vatican Museums & Sistine Chapel</td>
+                    <td>St. Peter's Basilica</td>
+                </tr>
+                <tr>
+                    <td>Day 3: City Stroll</td>
+                    <td>Pantheon & Trevi Fountain</td>
+                    <td>Sunset at Spanish Steps</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="food">
+        <h2>Roman Cuisine</h2>
+        <div class="food_flex">
+            <div class="food_item">
+                <h3>Pasta Carbonara</h3>
+                <p>Authentic Roman Carbonara uses only eggs, Pecorino Romano cheese, guanciale, and black pepper. No cream!</p>
+            </div>
+            <div class="food_item">
+                <h3>Roman Pizza</h3>
+                <p>Unlike Neapolitan pizza, Roman pizza has a super thin, crispy crust and is often sold by weight (al taglio).</p>
+            </div>
+            <div class="food_item">
+                <h3>Gelato</h3>
+                <p>Finish your day with authentic Italian gelato. Look for pale colors, which indicate natural ingredients.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tips" style="background-color: #eaeaea;">
+        <h2>Travel Tips</h2>
+        <div class="checklist">
+            <h3>Before You Go (Checklist)</h3>
+            <ul>
+                <li>Book Colosseum & Vatican tickets months in advance.</li>
+                <li>Pack extremely comfortable walking shoes (cobblestones!).</li>
+                <li>Bring a refillable water bottle for public fountains (nasoni).</li>
+            </ul>
+            <br>
+            <h3>How to Use Public Transport</h3>
+            <ol type="I">
+                <li>Buy a Metro ticket from a Tabacchi (tobacco shop).</li>
+                <li>Validate your ticket in the yellow machines before boarding.</li>
+                <li>Keep an eye on your belongings in crowded areas.</li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Your Guide</h2>
+        <div class="form_box">
+            <form>
+                <div class="form_group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Vraj Patel">
+                </div>
+
+                <div class="form_group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required placeholder="vraj@example.com">
+                </div>
+
+                <div class="form_group">
+                    <label>Preferred Budget Level:</label>
+
+                    <input type="radio" id="standard" name="budget" value="standard" checked>
+                    <label for="standard" style="display:inline; font-weight:normal;">Standard</label>
+                    
+                    <input type="radio" id="luxury" name="budget" value="luxury">
+                    <label for="luxury" style="display:inline; font-weight:normal;">Luxury</label>
+                </div>
+
+                <div class="form_group">
+                    <label for="message">Special Requests:</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us what you want to see..."></textarea>
+                </div>
+                <button type="submit" class="buttonn" style="width: 100%;">Send Request</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social_media_links">
+            <a href="https://www.facebook.com/places/Things-to-do-in-Rome-Italy/115353315143936/" target="_blank">Facebook</a> 
+            <a href="https://www.instagram.com/romecity_/" target="_blank">Instagram</a> 
+            <a href="https://x.com/Roma" target="_blank">Twitter</a>
+        </div>
+        <p class="copyright">All Rights And Design Reserved By VP CHASE®</p>
+    </footer>
+
+</body>
+</html>
